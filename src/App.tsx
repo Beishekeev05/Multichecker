@@ -1,11 +1,7 @@
-import MainPage from "./components/MainPage";
+import AppRouter from "./router/AppRouter";
 
 const App = () => {
-	return (
-		<div>
-			<MainPage />
-		</div>
-	);
+	return <AppRouter />;
 };
 
 export default App;

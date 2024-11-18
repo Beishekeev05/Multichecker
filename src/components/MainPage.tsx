@@ -3,14 +3,23 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { getAllBlokchanes } from "../store/slice/moneyThunk";
 import LoadingPage from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
 	const dispatch = useAppDispatch();
 	const { data, isLoading } = useAppSelector((state) => state.block);
 	const [open, setOpen] = useState(false);
 	const [text, setText] = useState("");
+	const navigate = useNavigate();
 
-	const openModal = () => setOpen((prev) => !prev);
+	// Handle navigation to inner page
+	const goToInnerPage = (address: string) => {
+		navigate(`${address}/inner`);
+	};
+
+	const openModal = () => {
+		setOpen((prev) => !prev);
+	};
 
 	const fetchBlockchanes = () => {
 		const ids = text
@@ -23,7 +32,7 @@ const MainPage = () => {
 
 	const handleCancel = () => {
 		setOpen(false);
-		setText(""); // Clear input when modal is closed
+		setText("");
 	};
 
 	return (
@@ -65,7 +74,9 @@ const MainPage = () => {
 				<MainBlock>
 					{data.length ? (
 						data.map((item: any) => (
-							<BlockChanes key={item.address}>
+							<BlockChanes
+								onClick={() => goToInnerPage(item.address)}
+								key={item.address}>
 								<div
 									style={{
 										backgroundColor: "bisque",
