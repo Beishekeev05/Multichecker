@@ -68,7 +68,7 @@ const Card = () => {
 
 export default Card;
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Box)(({}) => ({
 	backgroundColor: "#10161e",
 	width: "100%",
 	minHeight: "100vh",
@@ -80,7 +80,7 @@ const Container = styled(Box)(({ theme }) => ({
 	alignItems: "start",
 }));
 
-const Block = styled(Box)(({ theme }) => ({
+const Block = styled(Box)(({}) => ({
 	width: "100%",
 	maxWidth: "1200px",
 	backgroundColor: "#1d2633",
